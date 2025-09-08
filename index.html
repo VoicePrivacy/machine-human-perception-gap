@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine-Human Speech Perception Gap - Audio Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.2em;
+        }
+
+        .audio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .audio-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .audio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .audio-title {
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .audio-description {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .attributes {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .attribute {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+
+        audio {
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .comparison-section {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .comparison-title {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+
+        .comparison-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+            align-items: start;
+        }
+
+        @media (max-width: 768px) {
+            .comparison-pair {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .machine-tag {
+            background: #ffebee;
+            color: #c62828;
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            margin-left: 10px;
+        }
+
+        .human-tag {
+            background: #e8f5e9;
+            color: #2e7d32;
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            margin-left: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #e0e0e0;
+            color: #666;
+        }
+
+        .github-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: background 0.3s ease;
+        }
+
+        .github-link:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Machine-Human Speech Perception Gap</h1>
+        <p class="subtitle">Interactive Audio Demonstrations</p>
+
+        <div class="audio-grid">
+            <div class="audio-card">
+                <h3 class="audio-title">Sample 1: Gender Perception</h3>
+                <p class="audio-description">
+                    This sample demonstrates how machine and human listeners differ in gender attribution when fundamental frequency is artificially manipulated.
+                </p>
+                <div class="attributes">
+                    <span class="attribute">F0: 145Hz</span>
+                    <span class="attribute">Duration: 2.3s</span>
+                </div>
+                <audio controls>
+                    <source src="audio/sample1_gender.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+
+            <div class="audio-card">
+                <h3 class="audio-title">Sample 2: Age Estimation</h3>
+                <p class="audio-description">
+                    A speaker with vocal characteristics that create significant disagreement between human and machine age estimation algorithms.
+                </p>
+                <div class="attributes">
+                    <span class="attribute">Actual Age: 35</span>
+                    <span class="attribute">Duration: 3.1s</span>
+                </div>
+                <audio controls>
+                    <source src="audio/sample2_age.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+
+            <div class="audio-card">
+                <h3 class="audio-title">Sample 3: Accent Classification</h3>
+                <p class="audio-description">
+                    Regional accent detection showing systematic biases in machine learning models compared to human native speakers.
+                </p>
+                <div class="attributes">
+                    <span class="attribute">Region: Midwest US</span>
+                    <span class="attribute">Duration: 2.8s</span>
+                </div>
+                <audio controls>
+                    <source src="audio/sample3_accent.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+
+            <div class="audio-card">
+                <h3 class="audio-title">Sample 4: Emotional State</h3>
+                <p class="audio-description">
+                    Emotional valence perception varies significantly between humans and machines, particularly for subtle emotional expressions.
+                </p>
+                <div class="attributes">
+                    <span class="attribute">Emotion: Neutral-Negative</span>
+                    <span class="attribute">Duration: 2.5s</span>
+                </div>
+                <audio controls>
+                    <source src="audio/sample4_emotion.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+
+        <div class="comparison-section">
+            <h2 class="comparison-title">Direct Comparisons</h2>
+
+            <div class="comparison-pair">
+                <div class="audio-card">
+                    <h3 class="audio-title">Machine Prediction<span class="machine-tag">MACHINE</span></h3>
+                    <p class="audio-description">
+                        Audio sample that machines consistently classify as "young female" with 95% confidence.
+                    </p>
+                    <audio controls>
+                        <source src="audio/machine_sample.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+
+                <div class="audio-card">
+                    <h3 class="audio-title">Human Perception<span class="human-tag">HUMAN</span></h3>
+                    <p class="audio-description">
+                        The same audio sample that 89% of human listeners identify as "middle-aged male".
+                    </p>
+                    <audio controls>
+                        <source src="audio/human_sample.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>For more information about this research, visit our GitHub repository.</p>
+            <a href="https://github.com/yourusername/machine-human-speech-perception-gap" class="github-link">
+                View on GitHub
+            </a>
+        </div>
+    </div>
+</body>
+</html>
